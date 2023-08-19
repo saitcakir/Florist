@@ -46,16 +46,44 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=6.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.6.4.0\lib\netstandard2.0\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.6.1.0\lib\net472\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -127,10 +155,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FlowerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FlowerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +180,76 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="eden\readme.html" />
+    <Content Include="eden\site\css\camera.css" />
+    <Content Include="eden\site\css\font-awesome.css" />
+    <Content Include="eden\site\css\form.css" />
+    <Content Include="eden\site\css\grid.css" />
+    <Content Include="eden\site\css\ie.css" />
+    <Content Include="eden\site\css\owl.carousel.css" />
+    <Content Include="eden\site\css\reset.css" />
+    <Content Include="eden\site\css\style.css" />
+    <Content Include="eden\site\css\superfish.css" />
+    <Content Include="eden\site\css\touchTouch.css" />
+    <Content Include="eden\site\fonts\fontawesome-webfont.svg" />
+    <Content Include="eden\site\images\arrows.png" />
+    <Content Include="eden\site\images\arrowws.png" />
+    <Content Include="eden\site\images\big1.jpg" />
+    <Content Include="eden\site\images\big2.jpg" />
+    <Content Include="eden\site\images\big3.jpg" />
+    <Content Include="eden\site\images\big4.jpg" />
+    <Content Include="eden\site\images\big5.jpg" />
+    <Content Include="eden\site\images\big6.jpg" />
+    <Content Include="eden\site\images\big7.jpg" />
+    <Content Include="eden\site\images\big8.jpg" />
+    <Content Include="eden\site\images\camera-loader.gif" />
+    <Content Include="eden\site\images\car_img1.jpg" />
+    <Content Include="eden\site\images\car_img2.jpg" />
+    <Content Include="eden\site\images\header_img.jpg" />
+    <Content Include="eden\site\images\logo.png" />
+    <Content Include="eden\site\images\magnify.png" />
+    <Content Include="eden\site\images\marker.png" />
+    <Content Include="eden\site\images\menu_marker.png" />
+    <Content Include="eden\site\images\page1_img1.jpg" />
+    <Content Include="eden\site\images\page1_img2.jpg" />
+    <Content Include="eden\site\images\page1_img3.jpg" />
+    <Content Include="eden\site\images\page2_img1.jpg" />
+    <Content Include="eden\site\images\page2_img2.jpg" />
+    <Content Include="eden\site\images\page3_img1.jpg" />
+    <Content Include="eden\site\images\page3_img2.jpg" />
+    <Content Include="eden\site\images\page3_img3.jpg" />
+    <Content Include="eden\site\images\page3_img4.jpg" />
+    <Content Include="eden\site\images\page3_img5.jpg" />
+    <Content Include="eden\site\images\page3_img6.jpg" />
+    <Content Include="eden\site\images\page3_img7.jpg" />
+    <Content Include="eden\site\images\page3_img8.jpg" />
+    <Content Include="eden\site\images\page4_img1.jpg" />
+    <Content Include="eden\site\images\page4_img2.jpg" />
+    <Content Include="eden\site\images\page4_img3.jpg" />
+    <Content Include="eden\site\images\preloader.gif" />
+    <Content Include="eden\site\images\prevnext.png" />
+    <Content Include="eden\site\images\price_dot.png" />
+    <Content Include="eden\site\images\quotes.png" />
+    <Content Include="eden\site\images\totop.png" />
+    <Content Include="eden\site\index-1.html" />
+    <Content Include="eden\site\index-2.html" />
+    <Content Include="eden\site\index-3.html" />
+    <Content Include="eden\site\index-4.html" />
+    <Content Include="eden\site\index.html" />
+    <Content Include="eden\site\js\html5shiv.js" />
+    <Content Include="eden\site\js\jquery-migrate-1.1.1.js" />
+    <Content Include="eden\site\js\jquery.easing.1.3.js" />
+    <Content Include="eden\site\js\jquery.equalheights.js" />
+    <Content Include="eden\site\js\jquery.js" />
+    <Content Include="eden\site\js\jquery.mobilemenu.js" />
+    <Content Include="eden\site\js\jquery.ui.totop.js" />
+    <Content Include="eden\site\js\owl.carousel.js" />
+    <Content Include="eden\site\js\PIE.htc" />
+    <Content Include="eden\site\js\script.js" />
+    <Content Include="eden\site\js\sForm.js" />
+    <Content Include="eden\site\js\superfish.js" />
+    <Content Include="eden\site\js\TMForm.js" />
+    <Content Include="eden\site\js\touchTouch.jquery.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -159,6 +259,13 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="eden\site\bat\MailHandler-sub.php" />
+    <Content Include="eden\site\bat\MailHandler.php" />
+    <Content Include="eden\site\fonts\fontawesome-webfont.eot" />
+    <Content Include="eden\site\fonts\fontawesome-webfont.ttf" />
+    <Content Include="eden\site\fonts\fontawesome-webfont.woff" />
+    <Content Include="eden\site\fonts\FontAwesome.otf" />
+    <Content Include="eden\site\js\PIE.php" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -184,10 +291,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_FloristLayout.cshtml" />
+    <Content Include="Views\Flower\FlowerGallery.cshtml" />
+    <Content Include="Views\Flower\FlowerAdd.cshtml" />
+    <Content Include="Views\Flower\FlowerDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="FlowerPictures\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -215,6 +326,20 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CicekciBL\CicekciBL.csproj">
+      <Project>{c8c5d026-51d4-426d-bdcb-3d82c4aafee0}</Project>
+      <Name>CicekciBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CicekciDL\CicekciDL.csproj">
+      <Project>{be908b2f-5f7d-4baa-bf07-3c6f0059879a}</Project>
+      <Name>CicekciDL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CicekciEL\CicekciEL.csproj">
+      <Project>{97745a2c-dc8e-4b95-8e28-abbdffa376c2}</Project>
+      <Name>CicekciEL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -51,13 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IFlowerDal.cs" />
+    <Compile Include="Abstract\IFlowerDisplayDal.cs" />
+    <Compile Include="Abstract\IGenericDal.cs" />
     <Compile Include="Concrete\Context.cs" />
+    <Compile Include="EntityFramework\EfFlowerDal.cs" />
+    <Compile Include="EntityFramework\EfFlowerDisplayDal.cs" />
     <Compile Include="Migrations\202308152104080_init db.cs" />
     <Compile Include="Migrations\202308152104080_init db.designer.cs">
       <DependentUpon>202308152104080_init db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308191018531_FlowerPciture column added..cs" />
+    <Compile Include="Migrations\202308191018531_FlowerPciture column added..designer.cs">
+      <DependentUpon>202308191018531_FlowerPciture column added..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -72,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202308152104080_init db.resx">
       <DependentUpon>202308152104080_init db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308191018531_FlowerPciture column added..resx">
+      <DependentUpon>202308191018531_FlowerPciture column added..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

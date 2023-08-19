@@ -1,20 +1,22 @@
-﻿using System;
+﻿using CicekciEL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace CicekciEL.Entities
+namespace Cicekci.Models
 {
-    public class Flower
+    public class FlowerViewModel
     {
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public string FlowerPicture { get; set; }
 
-        public virtual ICollection<FlowerDisplay> FlowerDisplay { get; set; }
+        public HttpPostedFileBase FlowerPictureUpload { get; set; }
 
+        public virtual ICollection<FlowerDisplay> FlowerDisplay { get; set; }
     }
 }

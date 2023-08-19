@@ -1,0 +1,52 @@
+﻿@using CicekciEL.Entities
+@model List<Flower>
+@{
+    ViewBag.Title = "Flower Gallery";
+    Layout = "~/Views/Shared/_FloristLayout.cshtml";
+}
+<div class="content">
+    <div class="container_12">
+        <div class="grid_12">
+            <h2>Our Gallery</h2>
+        </div>
+        <div class="clear"></div>
+        <div class="gallery">
+            <div class="grid_9">
+                <p>Vivamus at magna non nunc stique rhoncusy. Aliquam nibh ante stas dictumcommodo luctus lraesent faucibus malesuada ucibusnec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna non nunc tristique rhoncus. Aliquam nibh antegestas id dictum a commodo luctus libero. </p>
+            </div>
+            <div class="clear"></div>
+
+
+            @{int counter = 1; }
+
+            @foreach (var item in Model)
+            {
+                <div class="grid_3">
+                    <a href="@item.FlowerPicture" class="gal">
+                        <div class="img_block">
+                            <img src="@item.FlowerPicture" alt="" height="250" width="250" class="img_inner">
+                            <span class="l"></span>
+                            <span class="ll"></span>
+                            <span class="r"></span>
+                            <span class="rr"></span>
+                            <span class="lb"></span>
+                            <span class="llb"></span>
+                            <span class="rb"></span>
+                            <span class="rrb"></span>
+                        </div>
+                    </a>
+                    <div class="title"><a href="/Flower/FlowerDetail/@item.Id">@item.Name</a></div>
+                </div>
+                
+                if (counter % 4 == 0)
+                {
+                    <div class="clear cl2"></div>
+
+                }
+                counter++;
+
+            }
+
+        </div>
+    </div>
+</div>

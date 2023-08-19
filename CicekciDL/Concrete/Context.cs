@@ -14,7 +14,7 @@ namespace CicekciDL.Concrete
         {
         }
 
-        public DbSet<Flower> Customers { get; set; }
+        public DbSet<Flower> Flowers { get; set; }
         public DbSet<FlowerDisplay> FlowerDisplays { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

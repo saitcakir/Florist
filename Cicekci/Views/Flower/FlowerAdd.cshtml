@@ -1,0 +1,84 @@
+﻿@model Cicekci.Models.FlowerViewModel
+@{
+    ViewBag.Title = "FlowerAdd";
+    Layout = "~/Views/Shared/_FloristLayout.cshtml";
+    string header;
+    string AddUpdate;
+}
+@section flowerbootsrapstyle{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+}
+<div class="content">
+    <div class="container_12">
+        <div class="grid_12">
+
+            @if (Model == null)
+            {
+                header = "Flower Add";
+                AddUpdate = "FlowerAdd";
+            }
+            else
+            {
+                header = "Flower Update";
+                AddUpdate = "FlowerUpdate";
+            }
+            <h2>@header</h2>
+
+            @using (Html.BeginForm(AddUpdate, "Flower", FormMethod.Post,
+    new
+    {
+        @class = "form-horizontal",
+        enctype = "multipart/form-data"
+    }))
+            {
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="row">
+
+
+                    <div class="col-8">
+                        <div class="col-12">
+                            <label>Name:</label>
+                            @Html.TextBoxFor(x => x.Name, null, new { @type = "text", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+                        <div class="col-12">
+                            <label>Description:</label>
+                            @Html.TextAreaFor(x => x.Description, new { @type = "text", @class = "form-control", rows = "8", cols = "30" })
+                            @Html.ValidationMessageFor(x => x.Description)
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        @if (Model != null && Model.FlowerPicture != null)
+                        {
+                            <img src="@Model.FlowerPicture" alt="çiçek resmi" />
+                        }
+                        else
+                        {
+                            <img src="~/FlowerPictures/default.jpg" alt="anonim çiçek resmi" />
+                        }
+
+                        @Html.TextBoxFor(x => x.FlowerPictureUpload, new
+                        {
+                            @class = "form-control",
+                            @type = "file",
+                       @id = "picture",
+                            multiple = "false"
+                        })
+                    </div>
+                </div>
+                <br />
+                if (Model != null)
+                {
+                    <button class="btn btn-success" type="submit">Flower Edit</button>
+                }
+                else
+                {
+                    <button class="btn btn-warning" type="submit">Flower Save</button>
+                }
+            }
+        </div>
+
+    </div>
+</div>
+

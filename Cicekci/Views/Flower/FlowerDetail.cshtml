@@ -1,0 +1,30 @@
+﻿@using CicekciEL.Entities
+@model Flower
+@{
+    ViewBag.Title = "FlowerDetail";
+    Layout = "~/Views/Shared/_FloristLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container_12">
+        <div class="grid_9">
+            <h2>@Model.Name</h2>
+            <div class="map">
+                <div class="img_block fleft">
+                    <img src="@Model.FlowerPicture" alt="" height="325" width="250" class="img_inner">
+
+                    <span class="l"></span>
+                    <span class="ll"></span>
+                    <span class="r"></span>
+                    <span class="rr"></span>
+                    <span class="lb"></span>
+                    <span class="llb"></span>
+                    <span class="rb"></span>
+                    <span class="rrb"></span>
+                </div>
+                <h2 style="margin-bottom:10px">Total Display: @ViewBag.totalDisplay</h2>
+                <p class="" style="font-size:20px">@Model.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
