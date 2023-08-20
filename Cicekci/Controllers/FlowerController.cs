@@ -23,27 +23,67 @@ namespace Cicekci.Controllers
 
         public ActionResult FlowerGallery()
         {
-
             var result = _flowerDal.GetList();
+
             return View(result);
         }
+
         public ActionResult FlowerDetail(int id)
         {
             var flower = _flowerDal.GetByID(id);
-            FlowerDisplay model = new FlowerDisplay()
+
+            FlowerDisplay flowerDisplay = new FlowerDisplay()
             {
+
                 DisplayDate = DateTime.Now,
                 FlowerId = id
             };
+            _flowerDisplayDal.Insert(flowerDisplay);
             ViewBag.totalDisplay = _flowerDal.GetTotalDisplayCountById(id);
-           
+
             return View(flower);
         }
 
+        [Authorize]
         public ActionResult FlowerAdd()
         {
             return View();
         }
+
+        [Authorize]
+        [HttpPost]
+        public JsonResult FlowerDelete(int id)
+        {
+            JqueryModel jqueryModel = new JqueryModel();
+            var result = _flowerDal.Delete(id);
+            if (result)
+            {
+                jqueryModel = new JqueryModel()
+                {
+                    Message = "ok",
+                    Status = true
+                };
+            }
+            else
+            {
+                jqueryModel = new JqueryModel()
+                {
+                    Message = "silme işlemi başarısız",
+                    Status = false
+                };
+            }
+
+            return Json(jqueryModel);
+        }
+
+        [Authorize]
+        public ActionResult FlowerList()
+        {
+            var result = _flowerDal.GetList();
+            return View(result);
+        }
+
+        [Authorize]
         [HttpPost]
         public ActionResult FlowerAdd(FlowerViewModel model)
         {
@@ -86,7 +126,7 @@ namespace Cicekci.Controllers
             return RedirectToAction("FlowerGallery", "Flower");
         }
 
-
+        [Authorize]
         public ActionResult FlowerUpdate(int id)
         {
             Flower model = _flowerDal.GetByID(id);
@@ -101,9 +141,12 @@ namespace Cicekci.Controllers
             return View("FlowerAdd", flower);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult FlowerUpdate(FlowerViewModel model)
         {
+
+            var editedFlower = _flowerDal.GetByID(model.Id);
             #region FlowerPicture
             if (model.FlowerPictureUpload != null && model.FlowerPictureUpload.ContentType.Contains("" +
                 "image") && model.FlowerPictureUpload.ContentLength > 0)
@@ -124,22 +167,29 @@ namespace Cicekci.Controllers
                 model.FlowerPicture = $"/FlowerPictures/{fileName}{uzanti}";
 
             }
+            else if (editedFlower.FlowerPicture != null)
+            {
+                model.FlowerPicture = editedFlower.FlowerPicture;
+            }
             else
             {
                 ModelState.AddModelError("", $"Lütfen doğru formatta veya yeterli boyutta resim seçiniz!");
-                return View(model);
+                return View("FlowerAdd", model);
             }
             #endregion
 
+
             Flower flower = new Flower()
             {
+                Id = model.Id,
+                CreatedDate = editedFlower.CreatedDate,
                 Name = model.Name,
                 Description = model.Description,
                 FlowerPicture = model.FlowerPicture
             };
             _flowerDal.Update(flower);
-
-            return View();
+            ViewBag.Message = "Update Successfull";
+            return View("FlowerAdd", model);
         }
     }
 }

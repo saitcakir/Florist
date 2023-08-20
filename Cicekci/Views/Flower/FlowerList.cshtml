@@ -1,0 +1,76 @@
+﻿@using CicekciEL.Entities
+@model List<Flower>
+@{
+    ViewBag.Title = "FlowerList";
+    Layout = "~/Views/Shared/_FloristLayout.cshtml";
+}
+@section flowerbootsrapstyle{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+}
+<script>
+
+    function Sil(id) {
+
+        var onay = confirm("Bu veriyi silmek istediğinizden emin misiniz?");
+        if (onay) {
+            $.ajax({
+                url: "/Flower/FlowerDelete/",
+                type: "POST",
+                data: { Id: id },
+
+                success: function (response) {
+                    if (response.Status) {
+                        alert("Process succesfull");
+                    } else {
+                        alert("Process failed: " + response.Message);
+                    }
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert.error("İstek başarısız:", error);
+                }
+            });
+        } else {
+            alert("Veri silme işlemi iptal edildi.");
+        }
+
+    }
+
+</script>
+<div class="content">
+    <div class="container_12">
+        <div class="grid_12">
+
+            <h2>Flower List</h2>
+            <a style="display: block; text-align: center;" href="/Flower/FlowerAdd/" class="btn btn-outline-success">New Flower Add</a> <br />
+
+            <table class="table table-bordered table-success">
+                <tr>
+                    <th>Flower Name</th>
+                    <th>Flower Description</th>
+                    <th>Flower Picture</th>
+                    <th>İşlemler</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td class="text-wrap">@item.Description</td>
+                        <td style="width:30%;height:stretch">
+                            <img src="@item.FlowerPicture" alt="" height="300" width="300" class="img_inner">
+                        </td>
+                        <td>
+                            <a type="button" href="/Flower/FlowerUpdate/@item.Id" class="btn btn-outline-warning">Update</a>
+                            <a onclick="Sil(@item.Id)" class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+</div>

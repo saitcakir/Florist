@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Flower Gallery";
     Layout = "~/Views/Shared/_FloristLayout.cshtml";
+
+    var StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+    var date = DateTime.Now.Month.ToString();
 }
 <div class="content">
     <div class="container_12">
@@ -22,7 +25,8 @@
             @foreach (var item in Model)
             {
                 <div class="grid_3">
-                    <a href="@item.FlowerPicture" class="gal">
+                    <a href="/Flower/FlowerDetail/@item.Id" class="">
+
                         <div class="img_block">
                             <img src="@item.FlowerPicture" alt="" height="250" width="250" class="img_inner">
                             <span class="l"></span>
@@ -35,12 +39,20 @@
                             <span class="rrb"></span>
                         </div>
                     </a>
-                    <div class="title"><a href="/Flower/FlowerDetail/@item.Id">@item.Name</a></div>
+                    <div class="title">
+                        <a href="/Flower/FlowerDetail/@item.Id">
+                            <p>
+                                @item.Name <br />
+                                Total Display:@item.FlowerDisplay.Count <br />
+                                Monthly Display:@item.FlowerDisplay.Where(x => x.DisplayDate >= StartDate).Count()
+                            </p>
+                        </a>
+                    </div>
                 </div>
-                
+
                 if (counter % 4 == 0)
                 {
-                    <div class="clear cl2"></div>
+                    <div class="clear"></div>
 
                 }
                 counter++;

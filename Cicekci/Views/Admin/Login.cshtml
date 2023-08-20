@@ -1,0 +1,58 @@
+﻿@model Cicekci.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_FloristLayout.cshtml";
+}
+@section flowerbootsrapstyle{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}
+
+<div class="content">
+    <div class="container_12">
+        <div class="grid_12">
+            <div class="grid_8">
+                <h2>Admin Login</h2>
+
+
+                @using (Html.BeginForm("Login", "Admin", FormMethod.Post,
+new
+{
+@class = "form-horizontal",
+enctype = "multipart/form-data"
+}))
+                {
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    if (ViewBag.Message != null)
+                    {
+                        <p class="text-success">@ViewBag.Message</p>
+                    }
+                    <div class="row">
+
+
+                        <div class="col-8">
+                            <div class="col-12">
+                                <label>Name:</label>
+                                @Html.TextBoxFor(x => x.Name, null, new { @type = "text", @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.Name)
+                            </div>
+                            <div class="col-12">
+                                <label>Password:</label>
+                                @Html.TextBoxFor(x => x.Password, new { @type = "password", @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.Password)
+                            </div>
+                            <br />
+                            <button class="btn btn-warning" type="submit">Login</button>
+                        </div>
+
+                    </div>
+                    <br />
+                  
+                }
+             
+            </div>
+        </div>
+
+    </div>
+</div>
+

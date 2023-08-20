@@ -155,12 +155,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FlowerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FlowerViewModel.cs" />
+    <Compile Include="Models\JqueryModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +254,19 @@
     <Content Include="eden\site\js\TMForm.js" />
     <Content Include="eden\site\js\touchTouch.jquery.js" />
     <Content Include="favicon.ico" />
+    <Content Include="FlowerPictures\Begonvil-a8a902d37f504b599f24f5039d27a222.jpg" />
+    <Content Include="FlowerPictures\default.jpg" />
+    <Content Include="FlowerPictures\ere-be1497b11eab4853a8e022e39a90a79e.png" />
+    <Content Include="FlowerPictures\fgsdf-e82b48ef1a0342799c1886f4dee6e8c0.png" />
+    <Content Include="FlowerPictures\Guzmanya -f92fb040b667465488278a7d130bc4c1.jpg" />
+    <Content Include="FlowerPictures\Gül-adde1c7da9c945038978dda8db46dcd1.jpeg" />
+    <Content Include="FlowerPictures\Menekşe-16bcb36d690b4446a85079db05b96af1.jpeg" />
+    <Content Include="FlowerPictures\Menekşe-4f527764eee04a928db92bbda72ea436.jpeg" />
+    <Content Include="FlowerPictures\Menekşe-8184709922ed42f2bc8641a0cf810ee0.jpeg" />
+    <Content Include="FlowerPictures\Orkide-fae91e010c9e4dab8e2c312e094e5499.jpg" />
+    <Content Include="FlowerPictures\Sümbül-7d36e625f8754840b677a6a1123700ff.jpeg" />
+    <Content Include="FlowerPictures\xzcxz-3b533c5929554067bd4fcfa3b44eb32c.png" />
+    <Content Include="FlowerPictures\Şakayık-f7180a46f4f14bb081b7fe59704e2f5e.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -295,10 +311,11 @@
     <Content Include="Views\Flower\FlowerGallery.cshtml" />
     <Content Include="Views\Flower\FlowerAdd.cshtml" />
     <Content Include="Views\Flower\FlowerDetail.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Flower\FlowerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FlowerPictures\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
