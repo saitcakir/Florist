@@ -13,7 +13,16 @@ namespace Cicekci.Controllers
         // GET: Admin
         public ActionResult Login()
         {
-            return View();
+
+            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("FlowerList", "Flower");
+            }
         }
         [HttpPost]
         public ActionResult Login(LoginModel model)
